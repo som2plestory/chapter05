@@ -7,21 +7,26 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class Ex02 {
-	
-	public static void main(String[] args) throws IOException{
+
+	public static void main(String[] args) throws IOException  {
 		
 		InputStream in = new FileInputStream("C:\\javaStudy\\file\\img.jpg");
 		OutputStream out = new FileOutputStream("C:\\javaStudy\\file\\byteBuffImg.jpg");
+
+		byte[] buff = new byte[1024];
 		
-		byte[]
-		
+		System.out.println("복사시작");
 		while(true) {
-			
-			int data = in.read();
-			
-			
+			int data = in.read(buff);
+			if(data == -1) {
+				System.out.println("복사끝"+data);
+				break;
+			}
+			out.write(buff);
 		}
 		
+		
+		out.close();
 		in.close();
 	}
 
